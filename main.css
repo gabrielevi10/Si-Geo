@@ -17,15 +17,7 @@ h1 {
   display: flex;
 }
 
-#texto{
-  border: 1px solid black;
-  margin-left: 100px;
-  margin-right: 50px;
-  height: 400px;
-  width: 400px;
-  text-align: center
-  
-}
+
 
 
 .info {
@@ -51,4 +43,23 @@ h1 {
     float: left;
     margin-right: 8px;
     opacity: 0.7;
+  }
+
+  #MINAS h1{
+    text-shadow: black 0.1em 0.1em 0.2em;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  #MINAS img{
+    display: flex;
+  }
+
+  #MINAS a{
+    display: flex;
+  }
+
+  #framer{
+    height: 400px;
+    width: 700px;
   }

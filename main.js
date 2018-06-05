@@ -46,7 +46,10 @@ function resetHighlight(e) {
 }
 
 function zoomToFeature(e) {
+  var x = e.target.feature.properties.NM_ESTADO
+  console.log(x)
   map.fitBounds(e.target.getBounds())
+  document.getElementById("texto").innerHTML = '<iframe src="pages.html#"'+x+' name="janela" id="framer" frameborder="0" scrolling="no"></iframe>'
 }
     
 function onEachFeature(feature, layer) {
