@@ -1,24 +1,8 @@
-h1 {
-  text-shadow: black 0.1em 0.1em 0.2em;
-  font-size: 50px;
-}
-
-#topo{
-  width: 100%;
-  height: 300px;  
-}
-
 #map{
-  height: 500px;
-  width: 700px;
+  height: 91vh;
+  width: 100%;
+  bottom: 0;
 }
-
-#container{
-  display: flex;
-}
-
-
-
 
 .info {
     padding: 6px 8px;
@@ -34,12 +18,12 @@ h1 {
   }
   .legend {
     text-align: left;
-    line-height: 18px;
+    line-height: 20px;
     color: #555;
   }
   .legend i {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     float: left;
     margin-right: 8px;
     opacity: 0.7;
@@ -62,4 +46,13 @@ h1 {
   #framer{
     height: 400px;
     width: 700px;
+  }
+
+  .leaflet-control-zoom-min {
+    text-indent: -999em;
+    background: #fff url(data/globo.gif) no-repeat scroll center center;
+    background-size: 12px 12px;
+  }
+  .leaflet-control-zoom-min:focus {
+    outline: 0;
   }
