@@ -15,4 +15,3 @@
 //= require turbolinks
 //= require leaflet
 //= require_tree .
-
