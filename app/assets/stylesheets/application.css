@@ -15,12 +15,13 @@
  *= require leaflet
  */
 
+
  #map{
     height: 91vh;
     width: 100%;
     bottom: 0;
   }
-  
+
   .info {
       padding: 6px 8px;
       font: 14px/16px Arial, Helvetica, sans-serif;
@@ -45,26 +46,26 @@
       margin-right: 8px;
       opacity: 0.7;
     }
-  
+
     #MINAS h1{
       text-shadow: black 0.1em 0.1em 0.2em;
       font-size: 20px;
       text-align: center;
     }
-  
+
     #MINAS img{
       display: flex;
     }
-  
+
     #MINAS a{
       display: flex;
     }
-  
+
     #framer{
       height: 400px;
       width: 700px;
     }
-  
+
     .leaflet-control-zoom-min {
       text-indent: -999em;
       background: #fff url(/images/globo.gif) no-repeat scroll center center;
@@ -72,5 +73,11 @@
     }
     .leaflet-control-zoom-min:focus {
       outline: 0;
+    }
+
+    .card{
+      display: flex;
+      justify-content: center;
+      margin-left: 300px;
     }
   

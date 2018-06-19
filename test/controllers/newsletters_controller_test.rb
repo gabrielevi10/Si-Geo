@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class NoticeTest < ActiveSupport::TestCase
+class NewslettersControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

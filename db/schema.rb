@@ -10,21 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_18_183123) do
+ActiveRecord::Schema.define(version: 2018_06_18_233310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "country_states", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "notices", force: :cascade do |t|
+  create_table "newsletters", force: :cascade do |t|
     t.string "title"
     t.text "description"
     t.string "link"
+    t.string "country"
+    t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

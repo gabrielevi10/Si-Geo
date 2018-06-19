@@ -1,2 +1,0 @@
-class CountryState < ApplicationRecord
-end
