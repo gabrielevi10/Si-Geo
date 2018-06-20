@@ -1,6 +1,10 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<br/>
+<div class="card card1" style="width: 50rem;">
+    <div class="card-header">
+        <h2>Edit <%= resource_name.to_s.humanize %></h2>
+    </div>
+    <div class="card-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
@@ -40,5 +44,11 @@
 
 <p>Unhappy? <%= button_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "
 Você tem certeza?" }, method: :delete %></p>
+<%= link_to 'voltar', :back , class: "btn btn-info" %>
 
-<%= link_to "Voltar", :back %>
+    </div>
+</div>
+
+</br>
+
+

@@ -1,6 +1,10 @@
-<h2>Inscrever-se</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<br/>
+<div class="card card1" style="width: 50rem;">
+    <div class="card-header">
+        <h2>Inscrever-se</h2>
+    </div>
+    <div class="card-body">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
@@ -20,10 +24,17 @@
     <%= f.label :confirmação_da_senha %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
+  </br>
   <div class="actions">
-    <%= f.submit "Inscrever-se" %>
+    <%= f.submit "Inscrever-se", class: "btn btn-primary" %>
+    <%= link_to 'voltar', :back , class: "btn btn-info" %>
   </div>
 <% end %>
+  <%= render "adms/shared/links" %>
+    </div>
+</div>
 
-<%= render "adms/shared/links" %>
+
+
+
+
