@@ -1,5 +1,6 @@
 class NewslettersController < ApplicationController
     before_action :set_newsletter, only: [:destroy, :show, :edit, :update]
+    before_action :authenticate_adm!
 
     def new
         @newsletter = Newsletter.new
