@@ -47,25 +47,6 @@
       opacity: 0.7;
     }
 
-    #MINAS h1{
-      text-shadow: black 0.1em 0.1em 0.2em;
-      font-size: 20px;
-      text-align: center;
-    }
-
-    #MINAS img{
-      display: flex;
-    }
-
-    #MINAS a{
-      display: flex;
-    }
-
-    #framer{
-      height: 400px;
-      width: 700px;
-    }
-
     .leaflet-control-zoom-min {
       text-indent: -999em;
       background: #fff url(/images/globo.gif) no-repeat scroll center center;
@@ -81,3 +62,4 @@
       margin-left: 300px;
     }
   
+   

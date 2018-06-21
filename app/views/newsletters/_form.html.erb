@@ -1,34 +1,79 @@
-
-    <div >
-        <% if @newsletter.errors %>
-            <ul>
-                <% @newsletter.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                <% end %>
-            </ul>
+<% x = [] %>
+<div>
+    <% if @newsletter.errors %>
+        <% @newsletter.errors.each do |message| %>
+            <% x.push(message.to_s) %>
         <% end %>
-    </div>
-    <%= form_for @newsletter do |f| %>
+    <% end %> 
+</div>
+
+<%= form_for @newsletter do |f| %>
+    
+    <% if x.include? "title" %>
         <div>
             <%= f.label :Titulo%> <br />
-            <%= f.text_field :title, class: "form-control" %>
+            <%= f.text_field :title, class: "form-control is-invalid" %>
+            <div class="invalid-feedback">
+                Por favor insira um Titulo!
+            </div>
         </div>
-        </br>
+        
+    <%else%>
+        <div>    
+            <%= f.label :Titulo%> <br />
+            <%= f.text_field :title, class: "form-control " %>
+        </div>    
+    <%end%>
+    </br>
+
+    <% if x.include? "description" %>
         <div>
-            <%= f.label :descrição %> <br />
+            <%= f.label :Descrição %> <br />
+            <%= f.text_area :description, size: '24x5', class: "form-control is-invalid" %>
+        </div>
+        <div class="invalid-feedback">
+            Por favor insira uma descrição!
+        </div>
+    <%else%>
+        <div>
+            <%= f.label :Descrição %> <br />
             <%= f.text_area :description, size: '24x5', class: "form-control" %>
         </div>
-        </br>
+    <%end%>
+    </br>
+
+    <% if x.include? "link" %>
+        <div>
+            <%= f.label :link %> <br />
+            <%= f.text_field :link, class: "form-control is-invalid"%>
+        </div>
+        <div class="invalid-feedback">
+            Por favor insira um link !
+        </div>
+    <%else%>
         <div>
             <%= f.label :link %> <br />
             <%= f.text_field :link, class: "form-control"%>
         </div>
-        </br>
+    <%end%>
+    </br>
+
+    <% if x.include? "country" %>
+        <div>
+            <%= f.label :País %> <br />
+            <%= f.text_field :country, class: "form-control is-invalid" %>
+        </div>
+        
+        <div class="invalid-feedback">
+            Por favor insira um País!
+        </div>
+    <%else%>
         <div>
             <%= f.label :País %> <br />
             <%= f.text_field :country, class: "form-control" %>
         </div>
-        </br>
-        <%= f.submit 'Enviar', class: "btn btn-primary" %>
-        <%= link_to 'voltar', :back , class: "btn btn-info" %>
-    <% end %>
+    <%end%>
+    </br>
+    <%= f.submit 'Enviar', class: "btn btn-primary" %>
+    <%= link_to 'voltar', :back , class: "btn btn-info" %>
+<% end %>
