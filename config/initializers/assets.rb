@@ -15,3 +15,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( main.js )
 Rails.application.config.assets.precompile += %w( estados_br.js )
 Rails.application.config.assets.precompile += %w( mundo.js )
+Rails.application.config.assets.precompile += %w( tour.js )
+

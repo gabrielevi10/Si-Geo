@@ -7,8 +7,7 @@
     <%= favicon_link_tag asset_path('favicon.png'), :rel => 'icon', :type =>  'image/png' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'estados_br' %>
-    <%= javascript_include_tag 'mundo' %>
+    
   </head>
 
   <body>
@@ -21,7 +20,9 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
+          <div id="inicio">
             <%= link_to "Inicio", root_path , class: "nav-link" %>
+            </div>
           </li>
            <% if adm_signed_in? %>
             <li class="nav-item">
@@ -34,13 +35,17 @@
           <% end %>
 
           <li class="nav-item">
+          <div id="sobre">
             <a class="nav-link" href="https://fs.unb.br/saladesituacao/">Sobre</a>
+          </div>
           </li>
 
           <li class="nav-item dropdown">
+          <div id="sala">
             <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Produtos da sala de situação
             </a>
+            </div>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="https://fs.unb.br/saladesituacao/boletim-epidemiologico">Boletim Epidemiológico</a>
               <a class="dropdown-item" href="https://fs.unb.br/saladesituacao/boletim-entomologico">Boletim Entomológico</a>
