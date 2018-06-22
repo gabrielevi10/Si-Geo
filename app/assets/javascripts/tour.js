@@ -25,10 +25,10 @@ $(document).ready(function(){
       content: "Clicando no Botão de + você da Zoom no mapa, e clicando em - você diminui o Zoom. Clicando no símbolo do globo, expande o mapa, para uma visualização mais ampla."
     }
   ]});
-  
+
   // Initialize the tour
   tour.init();
-  
+
   // Start the tour
   tour.start();
 });

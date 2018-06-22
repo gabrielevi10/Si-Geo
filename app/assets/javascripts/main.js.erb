@@ -9,7 +9,7 @@ function getColor(d) {
              d > 10   ? '#FED976' :
                         '#FFEDA0';
   }
-  
+
   //Função que imprime o mapa em si
   function style(feature) {
     return {
@@ -21,7 +21,7 @@ function getColor(d) {
       fillColor: getColor(feature.properties.CD_GEOCUF)
     }
   }
-  
+
   //Função que dá interativadade no mapa
   function highlightFeature(e) {
     var layer = e.target
@@ -36,13 +36,13 @@ function getColor(d) {
     }
     info.update(layer.feature.properties)
   }
-  
+
   //Função que reseta o mapa
   function resetHighlight(e) {
     geojson.resetStyle(e.target)
     info.update()
   }
-  
+
   //Função que seta o zoom  e mostra o pop up com as informações do mapa
   function zoomToFeature(e) {
     var  x = e.target.feature.properties.LONG_NAME
@@ -57,7 +57,7 @@ function getColor(d) {
           .openOn(map);
     // document.getElementById("texto").innerHTML = '<iframe src="pages.html#"'+x+' name="janela" id="framer" frameborder="0" scrolling="no"></iframe>'
   }
-  
+
   //Função que chamas animações de quando o mouse está sobre o mapa e o zoom
   function onEachFeature(feature, layer) {
     layer.on({
@@ -66,7 +66,7 @@ function getColor(d) {
       click: zoomToFeature
     })
   }
-  
+
   var statesData1 =  <%= Shape.all.find(1).geojson.to_json.html_safe %>
   var statesData =  <%= Shape.all.find(2).geojson.to_json.html_safe %>
   var map = L.map('map').setView([37.8, -96], 0)
@@ -87,7 +87,7 @@ function getColor(d) {
       id: "mapbox.light"
     }
   ).addTo(map)
-  
+
   // control that shows state info on hover
   var info = L.control()
   info.onAdd = function (map) {
@@ -95,7 +95,7 @@ function getColor(d) {
     this.update()
     return this._div
   };
-  
+
   info.update = function (props) {
     var x = false
     var y = false
@@ -128,22 +128,22 @@ function getColor(d) {
           x = true
       }
     }
-  
+
   };
   info.addTo(map)
-  
+
   var geojson
-  
+
   geojson = L.geoJson(statesData1, {
     style: style,
     onEachFeature: onEachFeature
   }).addTo(map)
-  
+
   geojson = L.geoJson(statesData, {
     style: style,
     onEachFeature: onEachFeature
   }).addTo(map)
-  
+
   var legend = L.control({ position: "bottomright" })
   legend.onAdd = function (map) {
     var div = L.DomUtil.create("div", "info legend"),
@@ -166,50 +166,50 @@ function getColor(d) {
     return div
   }
   legend.addTo(map)
-  
+
   var popup = L.popup();
-  
+
   L.Control.ZoomMin = L.Control.Zoom.extend({
     options: {
       position: "topleft",
       zoomMinText: "Zoom min",
       zoomMinTitle: "Zoom min"
     },
-  
+
     onAdd: function (map) {
       var zoomName = "leaflet-control-zoom"
         , container = L.DomUtil.create("div", zoomName + " leaflet-bar")
         , options = this.options
-  
+
       this._map = map
-      
+
       this._zoomMinButton = this._createButton(options.zoomMinText, options.zoomMinTitle,
        zoomName + '-min', container, this._zoomMin, this)
-  
+
        this._updateDisabled()
        map.on('zoomend zoomlevelschange', this._updateDisabled, this)
-       
+
       return container
     },
-  
+
     _zoomMin: function () {
       if (this.options.minBounds) {
         return this._map.fitBounds(this.options.minBounds);
       }
       this._map.setZoom(3)
     },
-  
+
     _updateDisabled: function () {
       var map = this._map
         , className = "leaflet-disabled"
-  
+
       L.DomUtil.removeClass(this._zoomMinButton, className)
       if (map._zoom == 4) {
         L.DomUtil.addClass(this._zoomMinButton, className)
       }
     }
   })
-  
-  map.addControl(new L.Control.ZoomMin())
 
-  
+  map.addControl(new L.Control.ZoomMin())
+  console.log(statesData1);
+  console.log(statesData)

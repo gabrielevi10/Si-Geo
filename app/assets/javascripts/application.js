@@ -16,6 +16,4 @@
 //= require leaflet
 //= require jquery3
 //= require popper
-//= require bootstrap
-//= require bootstrap-tour
-//= require cable
+//= require bootstrap-sprockets

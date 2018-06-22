@@ -15,13 +15,11 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    
+
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-          <div id="inicio">
+          <li class="nav-item active" id="inicio">
             <%= link_to "Inicio", root_path , class: "nav-link" %>
-            </div>
           </li>
            <% if adm_signed_in? %>
             <li class="nav-item">
@@ -33,18 +31,14 @@
           </li>
           <% end %>
 
-          <li class="nav-item">
-          <div id="sobre">
+          <li class="nav-item" id="sobre">
             <a class="nav-link" href="https://fs.unb.br/saladesituacao/">Sobre</a>
-          </div>
           </li>
 
-          <li class="nav-item dropdown">
-          <div id="sala">
-            <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <li class="nav-item dropdown" id="sala">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Produtos da sala de situação
             </a>
-            </div>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="https://fs.unb.br/saladesituacao/boletim-epidemiologico">Boletim Epidemiológico</a>
               <a class="dropdown-item" href="https://fs.unb.br/saladesituacao/boletim-entomologico">Boletim Entomológico</a>
