@@ -5,6 +5,9 @@ ruby '2.4.1'
 
 # Devise
 gem 'devise'
+gem 'rails_12factor', group: :production
+gem 'puma', '~> 3.11'
+########
 
 gem 'bootstrap', '~> 4.1.1'
 
