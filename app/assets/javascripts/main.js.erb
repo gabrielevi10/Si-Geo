@@ -45,17 +45,54 @@ function getColor(d) {
 
   //Função que seta o zoom  e mostra o pop up com as informações do mapa
   function zoomToFeature(e) {
+    var link = ""
+    var y = ""
+    var k = ""
+    var i =1
     var  x = e.target.feature.properties.LONG_NAME
     if(typeof x == 'undefined'){
       x = e.target.feature.properties.NM_ESTADO
-      x = "Brasil<br/>"+x
+      y= "Brasil<br/>"
     }
+    var conteudo = "<div class='accordion' id='accordionExample' style='min-width: 200px; max-width: 800px;min-height: 50px;max-height: 250px; WORD-BREAK:BREAK-ALL; overflow: auto'>"
+
+    <% for i in 1..Newsletter.all.length  %>
+      k = <%= Newsletter.all.find(i).to_json.html_safe%>
+      if(k.state == x){
+        conteudo = conteudo +"<div class='card' style='min-width: 200px; max-width: 800px;'>"+
+          "<div class='card-header' id='heading"+i+"' style='min-width: 200px; max-width: 800px;'>"+
+            "<h5 class='mb-0' style='min-width: 200px; max-width: 800px;'>"+
+              "<button class='btn btn-link collapsed'  type='button' data-toggle='collapse' data-target='#collapse"+i+"' aria-expanded='false' aria-controls='collapse"+i+"'style='min-width: 200px; max-width: 800px;'>"+k.title+"</button>"+
+            "</h5>"+
+          "</div>"+
+          "<div id='collapse"+i+"' class='collapse' aria-labelledby='heading"+i+"' data-parent='#accordionExample'>"+
+            "<div class='card-body'><p>"+k.description+"</p>Saiba mais em: <a href='"+k.link+"'target='_blank'>"+k.link+"</a></div>"+
+          "</div>"+
+        "</div>"
+
+      }
+      else if (k.country == x){
+        conteudo = conteudo + "<div class='card' style='min-width: 200px; max-width: 800px;'>"+
+          "<div class='card-header' id='heading"+i+"' style='min-width: 200px; max-width: 800px;'>"+
+            "<h5 class='mb-0' style='min-width: 200px; max-width: 800px;'>"+
+              "<button class='btn btn-link collapsed'  type='button' data-toggle='collapse' data-target='#collapse"+i+"' aria-expanded='false' aria-controls='collapse"+i+"'style='min-width: 200px; max-width: 800px;'>"+k.title+"</button>"+
+            "</h5>"+
+          "</div>"+
+          "<div id='collapse"+i+"' class='collapse' aria-labelledby='heading"+i+"' data-parent='#accordionExample'>"+
+            "<div class='card-body'><p>"+k.description+"</p>Saiba mais em: <a href='"+k.link+"'target='_blank'>"+k.link+"</a></div>"+
+          "</div>"+
+        "</div>"
+      }
+      i++
+    <% end %>
+  conteudo = conteudo +"</div>"
+
+
     map.fitBounds(e.target.getBounds())
     popup
           .setLatLng(e.latlng)
-          .setContent("<b> <div style='text-align: center'>"+x+" </div> </b><br/>"+"https://getbootstrap.com/docs/4.0/components/navs/")
+          .setContent("<b> <div style='text-align: center'>"+y+x+" </div> </b><br/>"+ conteudo)
           .openOn(map);
-    // document.getElementById("texto").innerHTML = '<iframe src="pages.html#"'+x+' name="janela" id="framer" frameborder="0" scrolling="no"></iframe>'
   }
 
   //Função que chamas animações de quando o mouse está sobre o mapa e o zoom
@@ -66,6 +103,9 @@ function getColor(d) {
       click: zoomToFeature
     })
   }
+  var tamanho = <%= Newsletter.all.length%>
+
+  var newsletters = <%= Newsletter.all.find(2).to_json.html_safe%>
 
   var statesData1 =  <%= Shape.all.find(1).geojson.to_json.html_safe %>
   var statesData =  <%= Shape.all.find(2).geojson.to_json.html_safe %>
@@ -211,5 +251,3 @@ function getColor(d) {
   })
 
   map.addControl(new L.Control.ZoomMin())
-  console.log(statesData1);
-  console.log(statesData)

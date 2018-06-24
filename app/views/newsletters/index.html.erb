@@ -16,7 +16,7 @@
                     <th colspan="3" ></th>
                 </tr>
             </thead>
-            
+
             <tbody>
                 <% @newsletter.each_with_index do |newsletter, index| %>
                     <tr>
@@ -33,7 +33,7 @@
                             <%= link_to 'Editar', edit_newsletter_path(newsletter), class: "btn btn-primary" %>
                         </td>
                         <td>
-                            <%= link_to 'Apagar', newsletter_path(newsletter), 
+                            <%= link_to 'Apagar', newsletter_path(newsletter),
                             method: :delete, data: { confirm: "Tem certeza?" } , class: "btn btn-danger"  %>
                         </td>
                     </tr>

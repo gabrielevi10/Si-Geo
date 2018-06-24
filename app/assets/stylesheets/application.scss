@@ -56,13 +56,23 @@
       outline: 0;
     }
 
+    .leaflet-popup-content {
+       width:auto !important;
+    }
+
     .card1{
-      display: flex;
-      justify-content: center;
-      margin-left: 300px;
+      margin: 0 auto;
+      float: none;
+      min-width: 10px;
+      max-width: 500px;
     }
 
 
     .invalido{
       display: inline;
+    }
+
+    .alert{
+      text-align: center;
+      margin-bottom: 0;
     }

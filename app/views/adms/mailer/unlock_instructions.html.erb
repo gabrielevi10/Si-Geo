@@ -8,7 +8,7 @@
 
 <p>Clique no link abaixo para desbloquear sua conta:</p>
 
-<p><%= link_to 'Desbloquear minha conta', unlock_url(@resource, unlock_token: @token) %></p>
+<p><%= link_to 'Desbloquear minha conta', unlock_url(@resource, unlock_token: @token),class: "btn btn-primary" %></p>
 
 <%= link_to 'voltar', :back , class: "btn btn-info" %>
 
@@ -16,6 +16,3 @@
 </div>
 
 </br>
-
-
-

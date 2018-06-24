@@ -12,12 +12,16 @@ class NewslettersController < ApplicationController
 
     def create
         @newsletter = Newsletter.new(newsletter_params)
-        if @newsletter.save
-            redirect_to :action => 'index'
-        else
-            render :new
+          if @newsletter.save
+            if @newsletter.country == "Brazil" && @newsletter.state.to_s == ""
+              render :new2
+            else
+              redirect_to :action => 'index'
+            end
+          else
+              render :new
+          end
         end
-    end
 
     def destroy
         @newsletter.destroy
@@ -46,7 +50,7 @@ class NewslettersController < ApplicationController
     end
 
     def newsletter_params
-        params.require(:newsletter).permit(:title, :description, :link, :country)
+        params.require(:newsletter).permit(:title, :description, :link, :country, :state)
     end
 
 end

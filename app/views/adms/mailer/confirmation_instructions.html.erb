@@ -5,12 +5,10 @@
     </div>
     <div class="card-body">
        <p>Pode confirmar o email da sua conta através do link abaixo:</p>
-       <p><%= link_to 'Confirme minha conta', confirmation_url(@resource, confirmation_token: @token) %></p>
+       <p><%= link_to 'Confirme minha conta', confirmation_url(@resource, confirmation_token: @token),class: "btn btn-primary" %></p>
         <%= link_to 'voltar', :back , class: "btn btn-info" %>
 
     </div>
 </div>
 
 </br>
-
-
