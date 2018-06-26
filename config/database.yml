@@ -84,5 +84,5 @@ test:
 production:
   <<: *default
   database: sigeo_production
-  username: sigeo
-  password: <%= ENV['SIGEO_DATABASE_PASSWORD'] %>
+  username: diego
+  password: 123

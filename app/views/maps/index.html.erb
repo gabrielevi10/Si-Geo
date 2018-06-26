@@ -22,7 +22,7 @@
         color: "white",
         dashArray: "3",
         fillOpacity: 0.7,
-        fillColor: getColor(feature.properties.CD_GEOCUF)
+        fillColor: getColor(feature.color)
       }
     }
 
@@ -109,9 +109,31 @@
       })
     }
 
-
+    var k = ""
     var statesData1 =  <%= Shape.all.find(1).geojson.to_json.html_safe %>
     var statesData =  <%= Shape.all.find(2).geojson.to_json.html_safe %>
+
+    statesData1.features.forEach(function(it){it.color = 0})
+    statesData.features.forEach(function(it){it.color = 0})
+
+    statesData1.features.forEach(function(it){
+      <% @newsletter.each_with_index do |k, i|%>
+        k = <%= k.to_json.html_safe %>
+        if (it.properties.LONG_NAME == k.country) {
+            it.color = it.color + 1
+      }
+      <% end %>
+    })
+
+    statesData.features.forEach(function(it){
+      <% @newsletter.each_with_index do |k, i|%>
+        k = <%= k.to_json.html_safe %>
+        if (it.properties.NM_ESTADO == k.state) {
+            it.color = 101
+      }
+      <% end %>
+    })
+
     var map = L.map('map').setView([37.8, -96], 0)
     var countriesLayer = L.geoJson(statesData1).addTo(map)
     map.fitBounds(countriesLayer.getBounds())
