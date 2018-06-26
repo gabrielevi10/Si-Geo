@@ -12,6 +12,23 @@ Rails.application.configure do
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+
+
+  config.action_mailer.smtp_settings = {
+    :address              =>  'smtp.sendgrid.net',
+    :port                 =>  '587',
+    :authentication       =>  :plain,
+    :user_name            =>  'app100516704@heroku.com',
+    :password             =>  'fu1dtnhp8439',
+    :domain               =>  'heroku.com',
+    :enable_starttls_auto  =>  true
+  }
+
   config.action_controller.perform_caching = true
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
