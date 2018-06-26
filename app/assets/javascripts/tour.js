@@ -2,8 +2,8 @@ $(document).ready(function(){
   var tour = new Tour({
     steps: [
     {
-      element: "#inicio",
       title: "Bem Vindo ao GeoMap",
+      element: "#inicio",
       content: "Ao clicar em Inicio, você será redirecionado para a página inicial do site, com uma visualização ampla do Mapa.",
       placement: "bottom"
     },
@@ -14,15 +14,15 @@ $(document).ready(function(){
       placement: "bottom"
     },
     {
-      element: "#sala",
       title: "Produtos da sala de Situação",
-      content: "Produtos da sala de situação",
+      element: "#sala",
+      content: "Aqui você encontra links para os outros produtos da sala de situação",
       placement: "bottom"
     },
     {
-      element: " .leaflet-control-zoom-min",
       title: "Visualização do Mapa",
-      content: "Clicando no Botão de + você da Zoom no mapa, e clicando em - você diminui o Zoom. Clicando no símbolo do globo, expande o mapa, para uma visualização mais ampla."
+      element: ".leaflet-control-zoom-min",
+      content: "Clicando no Botão de + você pode aproximar o mapa. clicando em - você diminui o Zoom. Clicando no símbolo do globo, expande o mapa, para uma visualização mais ampla."
     }
   ]});
 
