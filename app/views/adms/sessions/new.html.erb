@@ -1,0 +1,35 @@
+<br/>
+<div class="card card1">
+    <div class="card-header">
+        <h2>Entrar</h2>
+    </div>
+    <div class="card-body">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :senha %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :Lembrar_meus_dados %>
+    </div>
+  <% end -%>
+
+  <div>
+    <%= f.submit "Entrar", class: "btn btn-primary" %>
+    <%= link_to 'voltar', :back , class: "btn btn-info" %>
+  </div>
+<% end %>
+<%= render "adms/shared/links" %>
+
+    </div>
+</div>
+
+</br>

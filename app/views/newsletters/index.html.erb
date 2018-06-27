@@ -1,0 +1,49 @@
+<div class="card">
+    <div class="card-header">
+            <h1 class="card-title" style="text-align: center;">Noticías Registradas</h1>
+        </div>
+
+    <div class="card-body">
+        <table class="table table-striped" style="TABLE-LAYOUT: fixed;">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Título</th>
+                    <th>Descrição</th>
+                    <th>Link</th>
+                    <th>País</th>
+                    <th>Estado</th>
+                    <th colspan="3" ></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% @newsletter.each_with_index do |newsletter, index| %>
+                    <tr>
+                        <td style="WORD-BREAK:BREAK-ALL;"><%= index + 1 %></td>
+                        <td style="WORD-BREAK:BREAK-ALL;"><%= newsletter.title %></td>
+                        <td style="WORD-BREAK:BREAK-ALL;"><%= newsletter.description %></td>
+                        <td style="WORD-BREAK:BREAK-ALL;"><%= newsletter.link %></td>
+                        <td style="WORD-BREAK:BREAK-ALL;"><%= newsletter.country %></td>
+                        <td style="WORD-BREAK:BREAK-ALL;"><%= newsletter.state %></td>
+                        <td>
+                            <%= link_to 'mostrar', newsletter_path(newsletter), class: "btn btn-primary" %>
+                            </td>
+                        <td>
+                            <%= link_to 'Editar', edit_newsletter_path(newsletter), class: "btn btn-primary" %>
+                        </td>
+                        <td>
+                            <%= link_to 'Apagar', newsletter_path(newsletter),
+                            method: :delete, data: { confirm: "Tem certeza?" } , class: "btn btn-danger"  %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+        </br>
+        <%= link_to  "Nova noticía", new_newsletter_path , class: "btn btn-primary", style: "margin-left: 600px;" %>
+
+    </div>
+</div>
+
+</br>

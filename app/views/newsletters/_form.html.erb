@@ -1,0 +1,93 @@
+<% x = [] %>
+<% y = [] %>
+<% z = [] %>
+<div>
+    <% if @newsletter.errors %>
+        <% @newsletter.errors.each do |message| %>
+            <% x.push(message.to_s) %>
+        <% end %>
+    <% end %>
+</div>
+
+<%= form_for @newsletter do |f| %>
+    <% if x.include? "title" %>
+      <div>
+          <%= f.label :Titulo%> <br />
+          <%= f.text_field :title, placeholder: "Insira um titulo", class: "form-control is-invalid" %>
+          <div class="invalid-feedback invalido">
+              Por favor insira um Titulo!
+          </div>
+      </div>
+    <% else %>
+        <div>
+            <%= f.label :Titulo%> <br />
+            <%= f.text_field :title, placeholder: "Insira um titulo",class: "form-control " %>
+        </div>
+    <% end %>
+
+    <% if x.include? "description" %>
+        <div>
+            <%= f.label :Descrição %> <br />
+            <%= f.text_area :description,placeholder: "Insira uma descrição", size: '50x5', class: "form-control is-invalid" %>
+            <div class="invalid-feedback invalido">
+                Por favor insira uma descrição!
+            </div>
+        </div>
+    <% else %>
+        <div>
+            <%= f.label :Descrição %> <br />
+            <%= f.text_area :description,placeholder: "Insira uma descrição", size: '50x5', class: "form-control" %>
+        </div>
+    <% end %>
+
+    <% if x.include? "link" %>
+        <div>
+            <%= f.label :link %> <br />
+            <%= f.text_field :link, placeholder: "Insira um link",class: "form-control is-invalid"%>
+            <div class="invalid-feedback invalido">
+                Por favor insira um link !
+            </div>
+        </div>
+    <% else %>
+        <div>
+            <%= f.label :link %>
+            <%= f.text_field :link,placeholder: "Insira um link", class: "form-control"%>
+        </div>
+    <% end %>
+
+    <% file1 = File.read(Rails.root.join("public/mundo.geojson"))%>
+    <% obj1 = JSON.parse(file1) %>
+    <% for i in 0..250 %>
+      <% z.push(obj1["features"][i]["properties"]["LONG_NAME"])%>
+    <% end %>
+<% if x.include? "link" %>
+      <div>
+          <%= f.label :País %> <br />
+          <%= f.select :country,z, {:include_blank => "Escolha um país"}, {class: "custom-select mr-sm-2 is-invalid"} %>
+          <div class="invalid-feedback invalido">
+              Por selecione um país !
+          </div>
+      </div>
+<% else %>
+<div>
+    <%= f.label :País %> <br />
+    <%= f.select :country,z, {:include_blank => "Escolha um país"}, {class: "custom-select mr-sm-2"} %>
+</div>
+<% end %>
+</br>
+<% file = File.read(Rails.root.join("public/estados_br.geojson"))%>
+<% obj = JSON.parse(file) %>
+<% for i in 0..26 %>
+  <% y.push(obj["features"][i]["properties"]["NM_ESTADO"])%>
+<% end %>
+<% if @newsletter.country == "Brazil" %>
+<div>
+  <%= f.label :Estado %> <br />
+  <%= f.select :state,y, {:include_blank => "Escolha um estado"},  {class: "custom-select mr-sm-2"} %>
+</div>
+</br>
+<% end %>
+
+    <%= f.submit 'Enviar', class: "btn btn-primary" %>
+    <%= link_to 'voltar', :back , class: "btn btn-info" %>
+    <% end %>

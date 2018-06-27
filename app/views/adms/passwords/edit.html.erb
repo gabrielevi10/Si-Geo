@@ -1,0 +1,33 @@
+<br/>
+<div class="card card1" style="width: 50rem;">
+    <div class="card-header">
+        <h2>Mude sua senha</h2>
+    </div>
+    <div class="card-body">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.hidden_field :reset_password_token %>
+
+  <div class="field">
+    <%= f.label :senha, "Nova senha" %><br />
+    <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+    <% end %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :confirmação_da_senha, "Confirme sua nova senha" %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+</br>
+  <div class="actions">
+    <%= f.submit "Mude minha senha",class: "btn btn-primary"  %>
+    <%= link_to 'voltar', :back , class: "btn btn-info" %>
+  </div>
+<% end %>
+<%= render "adms/shared/links" %>
+    </div>
+</div>
+
+</br>

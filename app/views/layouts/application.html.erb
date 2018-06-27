@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sala de situação</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= favicon_link_tag asset_path('favicon.png'), :rel => 'icon', :type =>  'image/png' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <%= link_to image_tag("/images/coruja.png", border: 0, width: "40px", height: "35px", alt: "Sala de Situação", padding: 0, margin: 0 ), root_path , class: 'navbar-brand' , id: "something" %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active" id="inicio">
+            <%= link_to "Inicio", root_path , class: "nav-link" , id: "something" %>
+          </li>
+           <% if adm_signed_in? %>
+            <li class="nav-item">
+            <%= link_to "Gerenciar Notícias", newsletters_path , class: "nav-link" %>
+          </li>
+          <% else %>
+          <li class="nav-item">
+            <%= link_to "Entrar", newsletters_path , class: "nav-link" %>
+          </li>
+          <% end %>
+
+          <li class="nav-item" id="sobre">
+            <a class="nav-link" href="https://fs.unb.br/saladesituacao/" target='_blank'>Sobre</a>
+          </li>
+
+          <li class="nav-item dropdown" id="sala">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Produtos da sala de situação
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="https://fs.unb.br/saladesituacao/boletim-epidemiologico" target='_blank'>Boletim Epidemiológico</a>
+              <a class="dropdown-item" href="https://fs.unb.br/saladesituacao/boletim-entomologico" target='_blank'>Boletim Entomológico</a>
+              <a class="dropdown-item" href="https://fs.unb.br/saladesituacao/boletim-monitoramento" target='_blank'>Boletim Monitoramento</a>
+              <a class="dropdown-item" href="https://fs.unb.br/saladesituacao/clipping-de-noticias" target='_blank'>Clipping de Notícias</a>
+              <a class="dropdown-item" href="https://fs.unb.br/saladesituacao/clipping-de-rumoresdeteccao" target='_blank'>Clipping de Rumores/Detecção</a>
+              <a class="dropdown-item" href="https://fs.unb.br/saladesituacao/relatorios" target='_blank'>Relatórios</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="https://fs.unb.br/saladesituacao/" target='_blank'>Sala de Situação de Saúde</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+         <% if adm_signed_in? %>
+           <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%="#{current_adm.email}" %>
+                  </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <%= link_to 'Editar Conta', edit_adm_registration_path, class: "dropdown-item" %>
+                  <%= link_to "Sair", destroy_adm_session_path , class: "dropdown-item" , method: :delete %>
+            </div>
+            </li>
+            </ul>
+           <% end %>
+          <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+          <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit" disabled>Buscar</button>
+        </form>
+      </div>
+    </nav>
+    <% if notice.to_s != "" %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong class="notice"><%= notice %></strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% end %>
+
+    <% if alert.to_s != "" %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong class="alert"><%= alert %></strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <% end %>
+<%= yield %>
+  </body>
+</html>

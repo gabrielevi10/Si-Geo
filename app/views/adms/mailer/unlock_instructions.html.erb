@@ -1,0 +1,18 @@
+<br/>
+<div class="card card1" style="width: 50rem;">
+    <div class="card-header">
+        <p>Olá <%= @resource.email %>!</p>
+    </div>
+    <div class="card-body">
+        <p>Sua conta foi bloqueada devido a um número excessivo de tentativas de login malsucedidas.</p>
+
+<p>Clique no link abaixo para desbloquear sua conta:</p>
+
+<p><%= link_to 'Desbloquear minha conta', unlock_url(@resource, unlock_token: @token),class: "btn btn-primary" %></p>
+
+<%= link_to 'voltar', :back , class: "btn btn-info" %>
+
+    </div>
+</div>
+
+</br>
