@@ -1,7 +1,7 @@
 ActionMailer::Base.delivery_method = :smtp
 ActionMailer::Base.smtp_settings = {
   :address              =>  'smtp.sendgrid.net',
-  :port                 =>  '587',
+  :port                 =>  '5012',
   :authentication       =>  :plain,
   :user_name            =>  'app100516704@heroku.com',
   :password             =>  'fu1dtnhp8439',
