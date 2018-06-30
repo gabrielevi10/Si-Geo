@@ -2,7 +2,7 @@ $(document).ready(function(){
   var tour = new Tour({
     steps: [
     {
-      title: "Bem Vindo ao GeoMap",
+      title: "Bem Vindo ao Mapa Interativo",
       element: "#inicio",
       content: "Ao clicar em Inicio, você será redirecionado para a página inicial do site, com uma visualização ampla do Mapa.",
       placement: "bottom"
